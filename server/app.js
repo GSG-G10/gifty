@@ -12,7 +12,7 @@ app.disabled('x-powered-by');
 app.use(express.urlencoded({ extended: false }));
 app.use(cookie());
 
-app.use(express.static(join(__dirname, '..', 'client', 'build'), { maxAge: '30d' }));
+app.use(express.static(join(__dirname, '..', 'client', 'build')));
 
 app.set('port', process.env.PORT || 3000);
 
