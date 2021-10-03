@@ -20,11 +20,12 @@
     "url": "https://github.com/GSG-G10/gifty/issues"
   },
   "dependencies": {
-    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "joi": "^17.4.2",
     "jsonwebtoken": "^8.5.1",
     "pg": "^8.5.1"
   },
