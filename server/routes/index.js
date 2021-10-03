@@ -1,14 +1,18 @@
 const router = require('express').Router();
 
-const { checkUser } = require('../middlewares');
+const { setCookies, checkUser } = require('../middlewares');
 const {
-  addUser, getProduct, getProducts, deleteProduct,
+  getProducts,
+  getProduct,
+  signIn,
+  deleteProduct,
+  addUser,
 } = require('../controllers');
 
 router.get('/products', getProducts);
 router.get('/product/:productId', getProduct);
-router.post('/signup', addUser);
-
+router.post('/signin', signIn, setCookies);
+router.post('/signup', addUser, setCookies);
 router.delete('/deletePorduct/:productId', checkUser, deleteProduct);
 
 module.exports = router;
