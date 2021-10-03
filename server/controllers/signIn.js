@@ -1,11 +1,11 @@
-const { getUserData } = require('../database/queries');
+const { getUserData, getUserId } = require('../database/queries');
 const { comparePassword, signInSchema } = require('../utils/validations');
 
 module.exports = (req, res, next) => {
   const { email, password } = req.body;
   const { error } = signInSchema.validate({ password, email });
   if (error) {
-    res.status(400).json({ Error: 'error' });
+    res.status(400).json({ Error: error });
   } else {
     getUserData(email).then(({ rows }) => {
       if (!rows.length) {
@@ -14,7 +14,11 @@ module.exports = (req, res, next) => {
         const { password: hashedPassword } = rows[0];
         comparePassword(password, hashedPassword, (err, isMatch) => {
           if (isMatch) {
-            next();
+            getUserId(email)
+              .then((result) => {
+                req.userId = result.rows[0].id;
+                next();
+              });
           } else {
             res.json({ Error: 'You\'ve entered a wrong password' });
           }

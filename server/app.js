@@ -23,7 +23,7 @@ if (NODE_ENV === 'production') {
   });
 }
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8000);
 
 app.use(router);
 
