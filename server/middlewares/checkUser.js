@@ -1,17 +1,23 @@
-const jwt = require('jsonwebtoken');
+const { verify } = require('jsonwebtoken');
+
+const {
+  env: { secretKey },
+} = process;
 
 module.exports = (req, res, next) => {
-  const cookies = req.cookies.access_token;
-  if (cookies) {
-    jwt.verify(cookies, process.env.secretKey, (err, value) => {
+  const {
+    cookies: { access_token: accessToken },
+  } = req;
+  if (accessToken) {
+    verify(accessToken, secretKey, (err, value) => {
       if (err) {
-        next(err);
+        res.status(401).json({ error: 'Authentication Error', message: 'You are not registered yet' });
       } else {
-        res.username = value;
+        req.username = value;
         next();
       }
     });
   } else {
-    res.redirect('/login-register');
+    res.status(401).json({ error: 'Authentication Error', message: 'You are not registered yet' });
   }
 };
