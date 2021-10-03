@@ -1,6 +1,5 @@
 const { addUserQuery } = require('../database/queries');
-const { hashPassword } = require('../utils/validations');
-const { signupSchema } = require('../utils/validations');
+const { hashPassword, signupSchema } = require('../utils/validations');
 
 const addUser = (req, res) => {
   const { username, email, password } = req.body;
