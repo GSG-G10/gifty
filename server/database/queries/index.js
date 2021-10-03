@@ -1,6 +1,8 @@
+const getProductsQuiery = require('./getProductsQuiery');
+const getUserData = require('./getUserData');
+const getUserId = require('./getUserId');
 const addUserQuery = require('./addUserQuery');
 const getProductQuery = require('./getProductQuery');
-const getProductsQuiery = require('./getProductsQuiery');
 const deleteProductQuery = require('./deleteProductQuery');
 const getUserCartQuery = require('./getUserCartQuery');
 
@@ -10,4 +12,6 @@ module.exports = {
   deleteProductQuery,
   getProductsQuiery,
   getUserCartQuery,
+  getUserData,
+  getUserId,
 };

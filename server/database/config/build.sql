@@ -37,6 +37,7 @@ INSERT INTO users (username, email, password) VALUES ('tclendennen1', 'eruzicka1
 INSERT INTO users (username, email, password) VALUES ('fwhyman2', 'tdallinder2@newsvine.com', 'cS8mlI');
 INSERT INTO users (username, email, password) VALUES ('gbetham3', 'blourens3@yellowpages.com', 'dlFtR1xvLE');
 INSERT INTO users (username, email, password) VALUES ('rsparey4', 'mthorndycraft4@twitpic.com', 'dqxXyJrq');
+INSERT INTO users (username, email, password) VALUES ('ahmadahmad', 'ahmadahmad@gmail.com', '$2a$10$h6qyuAXZM.tXpwtW/FpFpeiyQqV.xPBZc.bzb8fvPUJtin2tMsVXG');
 
 INSERT INTO product (name, category, price, description, img) VALUES ('Calyptranthes acevedoi Alain', 'perfumes', 26, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent lectus. Vibus orcorbi a ipsum. Morbi quis tortor id nulla ultrices aliquet. ', 'https://www.sephora.com/productimages/sku/s513176-main-zoom.jpg');
 INSERT INTO product (name, category, price, description, img) VALUES ('Cynodontium strumiferum (Hedw.) Lindb.', 'flowers', 59, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus. aecenas rhoncus aliquam lacus.', 'https://m.media-amazon.com/images/I/71zNWbTHzxL._SX679_.jpg');
