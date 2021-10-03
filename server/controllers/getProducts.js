@@ -1,5 +1,5 @@
 const { getProductsQuiery } = require('../database/queries');
 
 module.exports = (req, res) => {
-    getProductsQuiery().then(result => console.log(result.rows)).catch(err => res.json(err));
+    getProductsQuiery().then(result => res.json(result.rows)).catch(err => res.json(err));
 }
