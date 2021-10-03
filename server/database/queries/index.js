@@ -1,4 +1,5 @@
-const getProductQuery = require('./getProductQuery');
 const addUserQuery = require('./addUserQuery');
+const getProductQuery = require('./getProductQuery');
+const getProductsQuiery = require('./getProductsQuiery');
 
-module.exports = { getProductQuery, addUserQuery };
+module.exports = { addUserQuery, getProductQuery, getProductsQuiery };
