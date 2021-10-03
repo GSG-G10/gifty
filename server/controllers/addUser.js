@@ -1,15 +1,14 @@
 const { addUserQuery } = require('../database/queries');
 const { hashPassword, signupSchema } = require('../utils/validations');
 
-const addUser = (req, res) => {
-  const { username, email, password } = req.body;
-  const { error } = signupSchema.validate(req.body);
+const addUser = (req, res, next) => {
+  const { error, value: { username, email, password } } = signupSchema.validate(req.body);
 
   if (error) {
     res.status(400).json({ msg: error.details[0].message });
   } else {
     hashPassword(password).then((hashed) => addUserQuery(username, email, hashed)
-      .then(() => res.json({ msg: 'Success' }))
+      .then(() => next())
       .catch((err) => res.json({ msg: err })));
   }
 };
