@@ -1,7 +1,8 @@
-const { getProductsQuiery } = require('../database/queries');
+const { getUserCartQuery } = require('../database/queries');
 
 module.exports = (req, res) => {
-  getProductsQuiery()
+  const userId = req;
+  getUserCartQuery(userId)
     .then((result) => res.json(result.rows))
     .catch((err) => res.json(err));
 };
