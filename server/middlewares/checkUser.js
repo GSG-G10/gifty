@@ -13,7 +13,7 @@ module.exports = (req, res, next) => {
       if (err) {
         res.status(401).json({ error: 'Authentication Error', message: 'You are not registered yet' });
       } else {
-        req.username = value;
+        req.userId = value;
         next();
       }
     });
