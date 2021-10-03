@@ -7,6 +7,6 @@ module.exports = (req, res, next) => {
       .then((data) => res.json(data.rows))
       .catch((err) => next(err));
   } else {
-    res.status(400).json({});
+    res.status(400).json({ error: 'Bad Request' });
   }
 };
