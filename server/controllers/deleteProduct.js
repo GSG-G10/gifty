@@ -2,8 +2,9 @@ const { deleteProductQuery } = require('../database/queries');
 
 const deleteProduct = (req, res) => {
   const { productId } = req.params;
-  deleteProductQuery(productId)
-    .then(() => res.redirect('/UserProducts'))
+  const { userId } = req;
+  deleteProductQuery(productId, userId)
+    .then(({ rowCount }) => (rowCount > 0 ? res.json({ msg: 'Product Deleted Successfully' }) : res.json({ msg: 'Product cannot deleted, something wrong' })))
     .catch((err) => res.json({ msg: err }));
 };
 

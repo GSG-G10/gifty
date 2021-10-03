@@ -1,8 +1,8 @@
 const router = require('express').Router();
 
-const { getProduct } = require('../controllers');
-const { deleteProduct } = require('../controllers');
+const { getProduct, deleteProduct } = require('../controllers');
+const { checkUser } = require('../middlewares');
 
 router.get('/product/:productId', getProduct);
-router.delete('/deletePorduct/:productId', deleteProduct);
+router.delete('/deletePorduct/:productId', checkUser, deleteProduct);
 module.exports = router;
