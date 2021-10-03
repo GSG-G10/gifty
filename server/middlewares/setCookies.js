@@ -7,7 +7,7 @@ module.exports = (req, res, next) => {
     if (err) {
       next(err);
     } else {
-      res.cookie('access_token', token, { httpOnly: true, secure: true }).send();
+      res.cookie('access_token', token, { httpOnly: true, secure: true }).json({msg: ''});
     }
   });
 };

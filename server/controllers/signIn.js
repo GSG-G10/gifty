@@ -1,4 +1,4 @@
-const { getUserData, getUserId } = require('../database/queries');
+const { getUserData } = require('../database/queries');
 const { comparePassword, signInSchema } = require('../utils/validations');
 
 module.exports = (req, res, next) => {
@@ -14,11 +14,8 @@ module.exports = (req, res, next) => {
         const { password: hashedPassword } = rows[0];
         comparePassword(password, hashedPassword, (err, isMatch) => {
           if (isMatch) {
-            getUserId(email)
-              .then((result) => {
-                req.userId = result.rows[0].id;
-                next();
-              });
+            req.userId = rows[0].id;
+            next();
           } else {
             res.json({ Error: 'You\'ve entered a wrong password' });
           }
