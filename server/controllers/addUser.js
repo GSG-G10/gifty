@@ -8,7 +8,10 @@ const addUser = (req, res, next) => {
     res.status(400).json({ msg: error.details[0].message });
   } else {
     hashPassword(password).then((hashed) => addUserQuery(username, email, hashed)
-      .then(() => next())
+      .then(() => {
+        res.json({ msg: 'Logged Successfully' });
+        next();
+      })
       .catch((err) => res.json({ msg: err })));
   }
 };
