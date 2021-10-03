@@ -1,8 +1,9 @@
 const router = require('express').Router();
 
-const { getProduct, signIn } = require('../controllers');
 const { setCookies } = require('../middlewares');
+const { getProducts, getProduct, signIn } = require('../controllers')
 
+router.get('/products', getProducts);
 router.get('/product/:productId', getProduct);
 router.post('/signin', signIn, setCookies);
 
