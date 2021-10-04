@@ -1,8 +1,10 @@
 const { addToCart } = require('../database/queries');
 
-module.exports = (req, res) => {
+module.exports = (req, res, next) => {
     const { quantity, product_id } = req.body;
     const { userId } = req
 
-    addToCart(quantity, userId, product_id).catch(err => next(err));
+    addToCart(quantity, userId, product_id)
+        .then(() => res.json({ msg: "Product Added Succesfully" }))
+        .catch(err => next(err));
 }
