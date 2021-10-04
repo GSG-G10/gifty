@@ -5,6 +5,6 @@ module.exports = (req, res, next) => {
     const { userId } = req
 
     addToCart(quantity, userId, product_id)
-        .then(() => res.json({ msg: "Product Added Succesfully" }))
+        .then(() => res.status(201).json({ msg: "Product Added Succesfully" }))
         .catch(err => next(err));
 }
