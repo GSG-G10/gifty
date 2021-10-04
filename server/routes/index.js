@@ -12,7 +12,7 @@ const {
 
 router.get('/products', getProducts);
 router.get('/product/:productId', getProduct);
-router.get('/UserProducts', checkUser, getUserCart);
+router.get('/userProducts', checkUser, getUserCart);
 router.post('/signin', signIn, setCookies);
 router.post('/signup', addUser, setCookies);
 router.delete('/deletePorduct/:productId', checkUser, deleteProduct);
