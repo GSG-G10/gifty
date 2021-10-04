@@ -1,0 +1,19 @@
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+.product-pagination ul {
+  justify-content: center;
+    margin: 40px 0;
+}
+@media screen and (min-width: 500px) and (max-width: 900px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 500px) {
+  .products-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
