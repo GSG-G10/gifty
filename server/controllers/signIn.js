@@ -1,5 +1,5 @@
-const { getUserData } = require('../database/queries');
 const { comparePassword, signInSchema } = require('../utils/validations');
+const { getUserData } = require('../database/queries');
 
 module.exports = (req, res, next) => {
   const { email, password } = req.body;

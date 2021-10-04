@@ -1,4 +1,4 @@
-const getProductQuery = require('../database/queries');
+const { getProductQuery } = require('../database/queries');
 
 module.exports = (req, res, next) => {
   const { productId } = req.params;
