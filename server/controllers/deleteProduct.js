@@ -1,6 +1,6 @@
 const { deleteProductQuery } = require('../database/queries');
 
-const deleteProduct = (req, res) => {
+const deleteProduct = (req, res, next) => {
   const { productId } = req.params;
   const { userId } = req;
 
@@ -10,7 +10,7 @@ const deleteProduct = (req, res) => {
         ? res.json({ msg: 'Product Deleted Successfully' })
         : res.json({ msg: 'Product cannot deleted, something wrong' })
     ))
-    .catch((err) => res.json({ msg: err }));
+    .catch((err) => next(err));
 };
 
 module.exports = deleteProduct;

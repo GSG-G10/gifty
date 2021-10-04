@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
 
   if (productId > 0) {
     getProductQuery(productId)
-      .then((data) => res.json(data.rows))
+      .then(({ rows }) => res.json({ data: rows }))
       .catch((err) => next(err));
   } else {
     res

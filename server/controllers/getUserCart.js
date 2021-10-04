@@ -4,6 +4,6 @@ module.exports = (req, res, next) => {
   const userId = req;
 
   getUserCartQuery(userId)
-    .then((result) => res.json(result.rows))
+    .then(({ rows }) => res.json({ data: rows }))
     .catch((err) => next(err));
 };

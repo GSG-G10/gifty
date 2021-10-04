@@ -14,15 +14,15 @@ const addUser = (req, res, next) => {
         .then(({ rowCount }) => {
           if (rowCount === 1) {
             getUserId(email)
-              .then((result) => {
-                req.userId = result.rows[0].id;
+              .then(({ rows }) => {
+                req.userId = rows[0].id;
                 next();
               });
           } else {
             res.json({ msg: 'Something Wrong!' });
           }
         })
-        .catch((err) => res.json({ msg: err })));
+        .catch((err) => next(err)));
   }
 };
 
