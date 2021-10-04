@@ -1,2 +1,2 @@
 const connection = require('../connection');
-module.exports = (id, quantity, user_id, product_id) => connection.query('INSERT INTO cart (id, quantity, user_id,product_id) VALUES ($1, $2, $3,$4);', [id, quantity, user_id, product_id]);
+module.exports = (quantity, user_id, product_id) => connection.query('INSERT INTO cart ( quantity, user_id,product_id) VALUES ($1, $2, $3);', [quantity, user_id, product_id]);

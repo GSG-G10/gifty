@@ -1,5 +1,7 @@
-const { getProductsQuiery } = require('../database/queries');
+const { getProductsQuery } = require('../database/queries');
 
-module.exports = (req, res) => {
-  getProductsQuiery().then((result) => res.json(result.rows)).catch((err) => res.json(err));
+module.exports = (req, res, next) => {
+  getProductsQuery()
+    .then((result) => res.json(result.rows[0]))
+    .catch((err) => next(err));
 };
