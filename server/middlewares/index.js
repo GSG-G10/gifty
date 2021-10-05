@@ -1,4 +1,7 @@
-const checkUser = require('./checkUser');
 const setCookies = require('./setCookies');
+const checkUser = require('./checkUser');
 
-module.exports = { checkUser, setCookies };
+module.exports = {
+  checkUser,
+  setCookies,
+};
