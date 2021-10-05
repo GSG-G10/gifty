@@ -6,6 +6,7 @@ const addToCartQuery = require('./addToCartquery');
 const addUserQuery = require('./addUserQuery');
 const getUserData = require('./getUserData');
 const getUserId = require('./getUserId');
+const getCommentsQuery = require('./getCommentsQuery');
 
 module.exports = {
   deleteProductQuery,
@@ -16,4 +17,5 @@ module.exports = {
   addUserQuery,
   getUserData,
   getUserId,
+  getCommentsQuery,
 };

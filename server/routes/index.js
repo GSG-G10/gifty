@@ -11,6 +11,7 @@ const {
   getUserCart,
   getProduct,
   addToCart,
+  getComments,
   addUser,
   signIn,
 } = require('../controllers');
@@ -22,5 +23,6 @@ router.get('/product/:productId', getProduct);
 router.post('/signup', addUser, setCookies);
 router.post('/signin', signIn, setCookies);
 router.get('/products', getProducts);
+router.get('/comments/:productId', getComments);
 
 module.exports = router;

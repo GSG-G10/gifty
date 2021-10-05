@@ -5,6 +5,7 @@ const getProduct = require('./getProduct');
 const addToCart = require('./addToCart');
 const addUser = require('./addUser');
 const signIn = require('./signIn');
+const getComments = require('./getComments');
 
 module.exports = {
   deleteProduct,
@@ -14,4 +15,5 @@ module.exports = {
   addToCart,
   addUser,
   signIn,
+  getComments,
 };

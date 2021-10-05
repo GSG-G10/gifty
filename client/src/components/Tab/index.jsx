@@ -54,9 +54,7 @@ function TabComponent({ description, productId }) {
     axios
       .get(`/comments/${productId}`)
       .then((response) => response.data)
-      .then((data) => {
-        setComments(data);
-      })
+      .then(({ data }) => setComments(data))
       .catch(() => setError(true));
   }, []);
 
@@ -148,7 +146,8 @@ function TabComponent({ description, productId }) {
                       style={{
                         display: "flex",
                         justifyContent: "space-around",
-                        alignItems: "center",
+                        alignItems: "flex-start",
+                        padding: "20px",
                         width: "100%",
                         margin: "0 auto",
                       }}
@@ -159,15 +158,15 @@ function TabComponent({ description, productId }) {
                         }}
                       >
                         <Typography
-                          sx={{ fontSize: 12 }}
+                          sx={{ fontSize: 14 }}
                           color="text.secondary"
                           gutterBottom
                         >
-                          Word of the Day
+                          {elem.username}
                         </Typography>
-                        <Typography variant="h7">{elem}</Typography>
+                        <Typography variant="h7">{elem.description}</Typography>
                       </Box>
-                      <Typography style={{ width: "10%" }}>
+                      <Typography style={{ width: "10%", marginTop: "20px" }}>
                         <img src={rateImg} />
                       </Typography>
                     </CardContent>
