@@ -9,17 +9,14 @@ const addUser = (req, res, next) => {
     username, email, password, userRole,
   }, { abortEarly: false })
     .then(() => hashPassword(password))
-    .then((hashed) => addUserQuery(username, email, hashed, userRole)
-      .then(() => {
-        getUserId(email)
-          .then(({ rows }) => {
-            req.userId = rows[0].id;
-            req.userRole = userRole;
-            next();
-          });
-      })
-      .catch(() => res.json({ msg: 'Email or Username is already exists!' })))
-    .catch((err) => next(err));
+    .then((hashed) => addUserQuery(username, email, hashed, userRole))
+    .then(() => getUserId(email))
+    .then(({ rows }) => {
+      req.userId = rows[0].id;
+      req.userRole = userRole;
+      next();
+    })
+    .catch(() => res.json({ msg: 'Email or Username is already exists!' }));
 };
 
 module.exports = addUser;
