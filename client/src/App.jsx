@@ -1,11 +1,9 @@
-import { Landing } from './pages/landing';
-
-import './App.css';
+import "./App.css";
+import Landing from "./pages/landing";
 
 function App() {
   return (
-    <div className='App'>
-      <h1>NAV</h1>
+    <div className="App">
       <Landing />
     </div>
   );
