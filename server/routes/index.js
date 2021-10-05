@@ -22,7 +22,7 @@ router.post('/addToCart', checkUser, addToCart);
 router.get('/product/:productId', getProduct);
 router.post('/signup', addUser, setCookies);
 router.post('/signin', signIn, setCookies);
-router.post('/addProduct', addProduct);
+router.post('/addProduct', checkUser, addProduct);
 router.get('/products', getProducts);
 
 module.exports = router;

@@ -2,7 +2,11 @@ const { hashPassword, signupSchema } = require('../utils/validations');
 const { addUserQuery, getUserId } = require('../database/queries');
 
 const addUser = (req, res, next) => {
-  const { error, value: { username, email, password } } = signupSchema.validate(req.body);
+  const {
+    error, value: {
+      username, email, password, userRole,
+    },
+  } = signupSchema.validate(req.body);
 
   if (error) {
     res
@@ -10,12 +14,13 @@ const addUser = (req, res, next) => {
       .json({ msg: error.details[0].message });
   } else {
     hashPassword(password)
-      .then((hashed) => addUserQuery(username, email, hashed)
+      .then((hashed) => addUserQuery(username, email, hashed, userRole)
         .then(({ rowCount }) => {
           if (rowCount === 1) {
             getUserId(email)
               .then(({ rows }) => {
                 req.userId = rows[0].id;
+                req.userRole = userRole;
                 next();
               });
           } else {

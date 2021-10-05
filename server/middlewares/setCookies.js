@@ -2,10 +2,10 @@ const { sign } = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
   const { SECRET_KEY } = process.env;
-  const { userId } = req;
+  const { userId, userRole } = req;
 
   sign(
-    { role: 'user', userId }, SECRET_KEY, (err, token) => {
+    { role: userRole, userId }, SECRET_KEY, (err, token) => {
       if (err) {
         next(err);
       } else {

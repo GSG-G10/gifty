@@ -19,6 +19,7 @@ module.exports = (req, res, next) => {
           comparePassword(password, hashedPassword, (err, isMatch) => {
             if (isMatch) {
               req.userId = rows[0].id;
+              req.userRole = rows[0].role;
               next();
             } else {
               res.json({ Error: 'You\'ve entered a wrong password' });

@@ -20,6 +20,7 @@ module.exports = (req, res, next) => {
           );
       } else {
         req.userId = value.userId;
+        req.userRole = value.role;
         next();
       }
     });
