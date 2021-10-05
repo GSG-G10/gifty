@@ -1,22 +1,26 @@
 const router = require('express').Router();
 
-const { setCookies, checkUser } = require('../middlewares');
 const {
-    getUserCart,
-    getProducts,
-    getProduct,
-    signIn,
-    deleteProduct,
-    addUser,
-    addToCart
+  setCookies,
+  checkUser,
+} = require('../middlewares');
+
+const {
+  deleteProduct,
+  getProducts,
+  getUserCart,
+  getProduct,
+  addToCart,
+  addUser,
+  signIn,
 } = require('../controllers');
 
-router.get('/products', getProducts);
-router.get('/product/:productId', getProduct);
-router.get('/userProducts', checkUser, getUserCart);
-router.post('/signin', signIn, setCookies);
-router.post('/signup', addUser, setCookies);
 router.delete('/deletePorduct/:productId', checkUser, deleteProduct);
-router.post("/addToCart", checkUser, addToCart);
+router.get('/userProducts', checkUser, getUserCart);
+router.post('/addToCart', checkUser, addToCart);
+router.get('/product/:productId', getProduct);
+router.post('/signup', addUser, setCookies);
+router.post('/signin', signIn, setCookies);
+router.get('/products', getProducts);
 
 module.exports = router;
