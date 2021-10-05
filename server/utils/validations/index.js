@@ -4,8 +4,8 @@ const signInSchema = require('./signInSchema');
 const signupSchema = require('./signupSchema');
 
 module.exports = {
-  signInSchema,
   comparePassword,
+  signInSchema,
   signupSchema,
   hashPassword,
 };

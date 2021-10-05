@@ -1,6 +1,7 @@
 const deleteProduct = require('./deleteProduct');
 const getUserCart = require('./getUserCart');
 const getProducts = require('./getProducts');
+const addProduct = require('./addProduct');
 const getProduct = require('./getProduct');
 const addToCart = require('./addToCart');
 const addUser = require('./addUser');
@@ -11,6 +12,7 @@ module.exports = {
   getUserCart,
   getProducts,
   getProduct,
+  addProduct,
   addToCart,
   addUser,
   signIn,

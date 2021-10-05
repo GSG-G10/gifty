@@ -9,6 +9,7 @@ const {
   deleteProduct,
   getProducts,
   getUserCart,
+  addProduct,
   getProduct,
   addToCart,
   addUser,
@@ -21,6 +22,7 @@ router.post('/addToCart', checkUser, addToCart);
 router.get('/product/:productId', getProduct);
 router.post('/signup', addUser, setCookies);
 router.post('/signin', signIn, setCookies);
+router.post('/addProduct', addProduct);
 router.get('/products', getProducts);
 
 module.exports = router;
