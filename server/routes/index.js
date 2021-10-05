@@ -10,6 +10,7 @@ const {
   getProducts,
   getUserCart,
   getProduct,
+  addComment,
   addToCart,
   getComments,
   addUser,
@@ -24,5 +25,6 @@ router.post('/signup', addUser, setCookies);
 router.post('/signin', signIn, setCookies);
 router.get('/products', getProducts);
 router.get('/comments/:productId', getComments);
+router.post('/addComment', checkUser, addComment);
 
 module.exports = router;

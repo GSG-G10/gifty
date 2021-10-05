@@ -72,8 +72,15 @@ function TabComponent({ description, productId }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const sendComment = () => {
-    console.log(addComment);
+    axios
+      .post("/addComment", {
+        productId: productId,
+        description: addComment,
+      })
+      .then((response) => response.data)
+      .catch(() => setError(true));
   };
 
   return (
