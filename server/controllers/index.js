@@ -1,19 +1,17 @@
-const addUser = require('./addUser');
-const getProduct = require('./getProduct');
-const getProducts = require('./getProducts');
-const signIn = require('./signIn');
 const deleteProduct = require('./deleteProduct');
-const addToCart = require('./addToCart');
 const getUserCart = require('./getUserCart');
-
-
+const getProducts = require('./getProducts');
+const getProduct = require('./getProduct');
+const addToCart = require('./addToCart');
+const addUser = require('./addUser');
+const signIn = require('./signIn');
 
 module.exports = {
-    addUser,
-    getProduct,
-    getProducts,
-    deleteProduct,
-    getUserCart,
-    signIn,
-    addToCart
+  deleteProduct,
+  getUserCart,
+  getProducts,
+  getProduct,
+  addToCart,
+  addUser,
+  signIn,
 };

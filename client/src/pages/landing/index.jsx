@@ -3,6 +3,7 @@ import axios from "axios";
 import { Snackbar } from "@material-ui/core";
 import MuiAlert from "@material-ui/lab/Alert";
 import Filter from "../../components/Filter";
+import { Slider } from "../../components/slider";
 
 function Landing() {
   const [products, setProducts] = useState([]);
@@ -33,8 +34,8 @@ function Landing() {
 
   return (
     <>
+      <Slider />
       <Filter products={products} setFilterProducts={setFilterProducts} />
-
       <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="error">An Error Occurred!</Alert>
       </Snackbar>

@@ -1,19 +1,19 @@
+const deleteProductQuery = require('./deleteProductQuery');
+const getUserCartQuery = require('./getUserCartQuery');
 const getProductsQuery = require('./getProductsQuery');
+const getProductQuery = require('./getProductQuery');
+const addToCartQuery = require('./addToCartquery');
+const addUserQuery = require('./addUserQuery');
 const getUserData = require('./getUserData');
 const getUserId = require('./getUserId');
-const addUserQuery = require('./addUserQuery');
-const getProductQuery = require('./getProductQuery');
-const deleteProductQuery = require('./deleteProductQuery');
-const addToCart = require('./addToCartquery');
-const getUserCartQuery = require('./getUserCartQuery');
 
 module.exports = {
-  addUserQuery,
-  getProductQuery,
   deleteProductQuery,
   getProductsQuery,
   getUserCartQuery,
+  getProductQuery,
+  addToCartQuery,
+  addUserQuery,
   getUserData,
   getUserId,
-  addToCart,
 };
