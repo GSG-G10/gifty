@@ -10,6 +10,6 @@ module.exports = (req, res, next) => {
       .then(() => res.status(201).json({ msg: 'Product Added Succesfully' }))
       .catch((err) => next(err));
   } else {
-    res.json({ msg: 'You are not a seller' });
+    res.status(401).json({ msg: 'You are not a seller' });
   }
 };
