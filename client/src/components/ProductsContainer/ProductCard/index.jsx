@@ -13,7 +13,7 @@ function ProductCard({ productImage, productName, productPrice }) {
         component="img"
         height="320"
         image={productImage}
-        alt="sss"
+        alt={productName}
         sx={{ borderBottom: "1px solid #e0e0e0" }}
       />
       <CardContent

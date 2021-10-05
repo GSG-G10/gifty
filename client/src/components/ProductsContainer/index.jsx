@@ -1,12 +1,13 @@
-import { useState } from "react";
-import Container from "@mui/material/Container";
-import SectionTitle from "../common/SectionTitle";
-import ProductCard from "./ProductCard";
-import Pagination from "@mui/material/Pagination";
+import { useState } from 'react';
+import Container from '@mui/material/Container';
+import Pagination from '@mui/material/Pagination';
+import SectionTitle from '../common/SectionTitle';
+import ProductCard from './ProductCard';
 
-import "./style.css";
+import './style.css';
 
-function ProductsContainer({ products }) {
+function ProductsContainer({products}) {
+  
   const [page, setPage] = useState(1);
   return (
     <Container maxWidth="md">
@@ -25,14 +26,18 @@ function ProductsContainer({ products }) {
           }
         })}
       </section>
-      <Pagination
-        className="product-pagination"
-        size="large"
-        count={products.length / 6}
-        variant="outlined"
-        page={page}
-        onChange={(e, value) => setPage(value)}
-      />
+      {products.length > 6 ? (
+        <Pagination
+          className="product-pagination"
+          size="large"
+          count={Math.ceil(products.length / 6)}
+          variant="outlined"
+          page={page}
+          onChange={(e, value) => setPage(value)}
+        />
+      ) : (
+        ''
+      )}
     </Container>
   );
 }
