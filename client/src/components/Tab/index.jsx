@@ -33,11 +33,15 @@ function TabPanel(props) {
   );
 }
 
-function TabComponent({ description, productId }) {
+function TabComponent({ description }) {
+  const productId = 11;
+
   const [value, setValue] = useState(0);
   const [addComment, setAddComment] = useState("");
   const [comments, setComments] = useState([]);
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const Alert = (props) => (
     <MuiAlert elevation={6} variant="filled" {...props} />
@@ -74,13 +78,30 @@ function TabComponent({ description, productId }) {
   };
 
   const sendComment = () => {
-    axios
-      .post("/addComment", {
-        productId: productId,
-        description: addComment,
-      })
-      .then((response) => response.data)
-      .catch(() => setError(true));
+    if (addComment) {
+      axios
+        .post("/addComment", {
+          productId: productId,
+          description: addComment,
+        })
+        .then((response) => response.data)
+        .then((data) => {
+          setComments((prev) => {
+            const newState = [
+              {
+                description: addComment,
+                username: "raghad",
+              },
+              ...prev,
+            ];
+            return newState;
+          });
+          setAddComment("");
+          setIsSuccess(true);
+          setSuccess(data.msg);
+        })
+        .catch(() => setError(true));
+    }
   };
 
   return (
@@ -183,8 +204,12 @@ function TabComponent({ description, productId }) {
             : null}
         </TabPanel>
       </Box>
+
       <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="error">An Error Occurred!</Alert>
+      </Snackbar>
+      <Snackbar open={isSuccess} autoHideDuration={10000} onClose={handleClose}>
+        <Alert severity="success">{success}</Alert>
       </Snackbar>
     </>
   );
