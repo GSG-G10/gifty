@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Snackbar } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
-import Filter from "../../components/Filter";
-import { Slider } from "../../components/slider";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import { Slider } from '../../components/slider';
+import ProductsContainer from '../../components/ProductsContainer';
 
 function Landing() {
   const [products, setProducts] = useState([]);
@@ -15,7 +15,7 @@ function Landing() {
   );
 
   const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
+    if (reason === 'clickaway') {
       return;
     }
     setError(false);
@@ -23,8 +23,8 @@ function Landing() {
 
   useEffect(() => {
     axios
-      .get("/products")
-      .then((response) => response.data)
+      .get('/products')
+      .then((response) => response.data.data)
       .then((data) => {
         setProducts(data);
         setFilterProducts(data);
@@ -34,11 +34,15 @@ function Landing() {
 
   return (
     <>
-      <Slider />
-      <Filter products={products} setFilterProducts={setFilterProducts} />
+      <Slider / >
+      <ProductsContainer
+      products={products}
+      setFilterProducts={setFilterProducts}
+      filterdProducts={filterdProducts} />
       <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="error">An Error Occurred!</Alert>
       </Snackbar>
+
     </>
   );
 }
