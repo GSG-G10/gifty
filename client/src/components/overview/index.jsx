@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export const Overview = ({ product }) => {
-  const [total, setTotal] = React.useState(89);
+  const [total, setTotal] = React.useState(product.price);
   const [quantity, setQuantity] = React.useState(1);
   const [stars, setStars] = React.useState(0);
   const [message, setMessage] = React.useState("");
@@ -42,11 +42,7 @@ export const Overview = ({ product }) => {
       <Grid container spacing={2} columns={18}>
         <Grid item xs={4}>
           <ImageListItem className="productImg">
-            <img
-              style={{ width: "100%" }}
-              src="https://www.thangamayil.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/F/l/Flower_Diamond_Necklace_CGL20JNEC01256.jpg"
-              alt="sss"
-            />
+            <img style={{ width: "100%" }} src={product.img} alt="sss" />
           </ImageListItem>
         </Grid>
         <Grid item xs={4}>
@@ -67,7 +63,7 @@ export const Overview = ({ product }) => {
                 }}
               >
                 <Typography variant="h4" component="div">
-                  Nacklas
+                  {product.name}
                 </Typography>
                 <Typography variant="body2">
                   <Rating
@@ -85,7 +81,7 @@ export const Overview = ({ product }) => {
                 $ {quantity * total}.00
               </Typography>
               <Typography variant="h7" sx={{ mb: 1.5 }}>
-                Free Shipping Limited Time
+                {product.description}
               </Typography>
             </CardContent>
             <CardActions
@@ -128,7 +124,7 @@ export const Overview = ({ product }) => {
                   height: "5vh",
                 }}
                 size="large"
-                onClick={addToCart}
+                onClick={product.length > 0 && addToCart}
               >
                 Add to Cart
               </Button>
