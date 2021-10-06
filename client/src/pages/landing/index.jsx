@@ -8,6 +8,7 @@ import ProductsContainer from '../../components/ProductsContainer';
 function Landing() {
   const [products, setProducts] = useState([]);
   const [filterdProducts, setFilterProducts] = useState(products);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
   const Alert = (props) => (
@@ -28,6 +29,7 @@ function Landing() {
       .then((data) => {
         setProducts(data);
         setFilterProducts(data);
+        setLoading(false);
       })
       .catch(() => setError(true));
   }, []);
@@ -38,7 +40,8 @@ function Landing() {
       <ProductsContainer
       products={products}
       setFilterProducts={setFilterProducts}
-      filterdProducts={filterdProducts} />
+      filterdProducts={filterdProducts}
+      loading={loading} />
       <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="error">An Error Occurred!</Alert>
       </Snackbar>
