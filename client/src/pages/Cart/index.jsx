@@ -2,7 +2,7 @@ import './style.css';
 import React, {useState} from 'react';
 import axios from 'axios';
 
-function index () {
+function Cart() {
   function sum () {
     let sum = 0;
     cart.forEach (ele => (sum = sum + ele.price * ele.quantity));
@@ -62,4 +62,4 @@ function index () {
   );
 }
 
-export default index;
+export default Cart;
