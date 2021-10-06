@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import CardContent from "@mui/material/CardContent";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Signin from "../../components/SignForms/Signin";
-import Signup from "../../components/SignForms/signup";
-import "./style.css";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import CardContent from '@mui/material/CardContent';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Signin from '../../components/SignForms/Signin';
+import Signup from '../../components/SignForms/signup';
+import './style.css';
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const {
+    children, value, index, ...other
+  } = props;
   return (
     <div
       role="tabpanel"
@@ -31,25 +32,21 @@ function TabPanel(props) {
 
 function Register() {
   const [value, setValue] = useState(0);
-  axios.get("/products").then(console.log);
-
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
   };
-  const a11yProps = (index) => {
-    return {
-      id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
-    };
-  };
+  const a11yProps = (index) => ({
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  });
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   return (
     <>
-      <Box className="tab-container">
+      <Box className="tab-container2">
         <Box>
           <Tabs
             value={value}
@@ -71,13 +68,14 @@ function Register() {
           <Box
             component="div"
             sx={{
-              width: "100%",
-              wordBreak: "break-all",
-              height: "100%",
+              width: '100%',
+              wordBreak: 'break-all',
+              height: '100%',
+
             }}
           >
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} gutterBottom>
+              <Typography sx={{ fontSize: 14, margin: '8px 0 16px' }} gutterBottom>
                 Create a new account. Once you‘ve set it up, you can take
                 advantage of many benifits of membership.
               </Typography>
@@ -90,13 +88,13 @@ function Register() {
           <Box
             component="div"
             sx={{
-              width: "100%",
-              wordBreak: "break-all",
-              height: "100%",
+              width: '100%',
+              wordBreak: 'break-all',
+              height: '100%',
             }}
           >
             <CardContent>
-              <Typography sx={{ fontSize: 14 }} gutterBottom>
+              <Typography sx={{ fontSize: 14, margin: '20px 0' }} gutterBottom>
                 Create a new account. Once you‘ve set it up, you can take
                 advantage of many benifits of membership.
               </Typography>

@@ -2,12 +2,16 @@ const { hashPassword, signupSchema } = require('../utils/validations');
 const { addUserQuery, getUserId } = require('../database/queries');
 
 const addUser = (req, res, next) => {
-  const { error, value: { username, email, password } } = signupSchema.validate(req.body);
-
+  const {
+    email, password, username, confirmPassword,
+  } = req.body;
+  const { error } = signupSchema.validate({
+    email, password, username, confirmPassword,
+  });
   if (error) {
     res
       .status(400)
-      .json({ msg: error.details[0].message });
+      .json({ Error: error.details[0].message });
   } else {
     hashPassword(password)
       .then((hashed) => addUserQuery(username, email, hashed)
@@ -19,10 +23,10 @@ const addUser = (req, res, next) => {
                 next();
               });
           } else {
-            res.json({ msg: 'Something Wrong!' });
+            res.json({ Error: 'Something Wrong!' });
           }
         })
-        .catch((err) => next(err)));
+        .catch(() => res.json({ Error: 'Email or Username is already exists!' })));
   }
 };
 
