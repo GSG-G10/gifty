@@ -7,7 +7,7 @@ import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Signin from "../../components/SignForms/Signin";
-import Signup from "../../components/SignForms/Signup";
+import Signup from "../../components/SignForms/signup";
 import "./style.css";
 
 function TabPanel(props) {

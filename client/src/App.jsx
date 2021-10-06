@@ -1,13 +1,15 @@
-import { Landing } from "./pages/landing";
-import "./App.css";
 import Register from "./pages/Register";
+import Landing from "./pages/landing";
+import TabComponent from "./components/Tab";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      {/* <h1>NAV</h1>
-      <Landing /> */}
+      {/* <Landing />  */}
       <Register />
+      {/* <Landing /> 
+      <TabComponent /> */}
     </div>
   );
 }
