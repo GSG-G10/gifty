@@ -1,11 +1,15 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import ProductCard from '../ProductsContainer/ProductCard';
-import "./style.css";
-
+import './style.css'
+import Container from '@mui/material/Container';
 function RelatedProducts({relatedCategory}) {
 
+const filterdProducts = () => {
+  return products.filter(({category}) => {return category === relatedCategory})
+}
   return (
+    <Container maxWidth="md">
     <Carousel
       additionalTransfrom={0}
       arrows
@@ -13,14 +17,14 @@ function RelatedProducts({relatedCategory}) {
       className=""
       dotListClass=""
       infinite
-      itemClass=""
+      itemClass="related-card"
       responsive={{
         desktop: {
           breakpoint: {
             max: 3000,
             min: 1024
           },
-          items: 6,
+          items: 5,
           partialVisibilityGutter: 40
         },
         mobile: {
@@ -45,11 +49,11 @@ function RelatedProducts({relatedCategory}) {
       slidesToSlide={1}
       swipeable
 >
-  {products.filter(filterdProduct => {return filterdProduct.category === relatedCategory})
-  .map(({img, name, price}) => <ProductCard productImage={img} productName={name} productPrice={price} />
+  {filterdProducts().map(({img, name, price}) => <ProductCard productImage={img} productName={name} productPrice={price} />
   )}
   
 </Carousel>
+</Container>
   )
 }
 
