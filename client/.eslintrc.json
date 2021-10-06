@@ -5,8 +5,8 @@
         "node": true
     },
     "extends": [
+        "eslint:recommended",
         "plugin:react/recommended",
-        "airbnb",
         "plugin:react/jsx-runtime"
     ],
     "parserOptions": {
@@ -20,5 +20,12 @@
         "react"
     ],
     "rules": {
-    }
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "extensions": [".js", ".jsx"]
+          }
+        }
+      }
 }

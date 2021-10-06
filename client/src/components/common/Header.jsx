@@ -8,6 +8,13 @@ import "./Header.css";
 
 const Header = () => {
   const {basket, setBasket} = useState();
+  useEffect (() => {
+    axios
+      .get ('/userProducts')
+      .then (response => response.data)
+      .then (data => setBasket(data.length))
+      .catch (err => console.log (err));
+  }, []);
 
   const arr = [
     {name: 'home', link: '/'},
@@ -29,7 +36,7 @@ const Header = () => {
       </div>
       <div className="cart">
       <img src={basketicon} className="shoppingCart"/>
-      <span className="cart-top">0</span>
+      <span className="cart-top">{basket}</span>
       <span>cart</span>
       </div>
       </div>
