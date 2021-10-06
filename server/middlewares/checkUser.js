@@ -19,6 +19,7 @@ module.exports = (req, res, next) => {
             },
           );
       } else {
+        console.log(1);
         req.userId = value.userId;
         next();
       }

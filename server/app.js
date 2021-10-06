@@ -13,6 +13,7 @@ app.use(compression());
 app.disabled('x-powered-by');
 app.use(express.urlencoded({ extended: false }));
 app.use(cookie());
+app.use(express.json());
 
 if (NODE_ENV === 'production') {
   app.use(express.static(join(__dirname, '..', 'client', 'build')));
