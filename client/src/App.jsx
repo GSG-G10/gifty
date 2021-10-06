@@ -10,8 +10,8 @@ function App() {
       <Header />
       <Switch >
       <Route path="/" component={Landing} />
-      <Route path="/signin" component={Landing} />
-      <Route path="/signup" component={Landing} />
+      <Route path="/register" component={Register} />
+      
       </Switch>
       </Router>
       <Landing />

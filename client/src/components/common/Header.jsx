@@ -2,12 +2,12 @@ import React from 'react';
 import logo from '../../img/gifylogo.png';
 import basketicon from '../../img/Vector.png';
 import {NavLink} from 'react-router-dom';
-//import {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import "./Header.css";
 
 
 const Header = () => {
- // const {basket, setBasket} = useState ();
+  const {basket, setBasket} = useState();
 
   const arr = [
     {name: 'home', link: '/'},
@@ -24,8 +24,8 @@ const Header = () => {
         ))}
       </nav>
       <div className="login-singup">
-        <NavLink to="/signin" className="login-singup-nav">login/</NavLink>
-        <NavLink to="/signup" className="login-singup-nav">register</NavLink>
+        <NavLink to="/register" className="login-singup-nav">login/</NavLink>
+        <NavLink to="/register" className="login-singup-nav">register</NavLink>
       </div>
       <div className="cart">
       <img src={basketicon} className="shoppingCart"/>
