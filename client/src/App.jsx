@@ -1,6 +1,6 @@
-import "./App.css";
 import Landing from "./pages/landing";
 import TabComponent from "./components/Tab";
+import "./App.css";
 
 function App() {
   return (
