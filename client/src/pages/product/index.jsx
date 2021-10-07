@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 
-import axios from "axios";
+import Overview from '../../components/overview';
 
-import { Overview } from "../../components/overview";
-
-function Product({ productId }) {
+function Product() {
+  const { productId } = useParams();
   const [product, setProduct] = React.useState([]);
 
   React.useEffect(() => {
