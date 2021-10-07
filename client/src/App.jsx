@@ -1,16 +1,10 @@
-import Landing from './pages/landing';
-import TabComponent from './components/Tab';
+import Footer from './components/common/Footer';
 import './App.css';
-import Register from './pages/Register';
 
 function App() {
   return (
     <div className="App">
-      {/* <Landing />  */}
-      {/* <TabComponent /> */}
-      <Register />
-      {/* <Landing />
-      <TabComponent /> */}
+      <Footer />
     </div>
   );
 }
