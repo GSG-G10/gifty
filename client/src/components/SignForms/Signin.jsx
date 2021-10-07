@@ -7,9 +7,7 @@ import axios from 'axios';
 import './style.css';
 
 function Signin() {
-  const [isError, setIsError] = useState(false);
   const [error, setError] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
   const [success, setSuccess] = useState('');
   const [values, setValues] = useState({ password: '', email: '' });
 
@@ -24,21 +22,15 @@ function Signin() {
         .then((response) => response.data)
         .then((data) => {
           if (data.Error) {
-            setIsSuccess(false);
             setSuccess('');
-            setIsError(true);
             setError(data.Error);
           } else {
-            setIsError(false);
             setError('');
-            setIsSuccess(true);
             setSuccess(data.msg);
           }
         })
         .catch(() => {
-          setIsSuccess(false);
           setSuccess('');
-          setIsError(true);
           setError('Error');
         });
     }
@@ -54,7 +46,7 @@ function Signin() {
     if (reason === 'clickaway') {
       return;
     }
-    setIsError(false);
+    setError('');
   };
 
   return (
@@ -101,10 +93,10 @@ function Signin() {
           </Button>
         </form>
       </Box>
-      <Snackbar open={isError} autoHideDuration={10000} onClose={handleClose}>
+      <Snackbar open={Boolean(error)} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="error">{error}</Alert>
       </Snackbar>
-      <Snackbar open={isSuccess} autoHideDuration={10000} onClose={handleClose}>
+      <Snackbar open={Boolean(success)} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="success">{success}</Alert>
       </Snackbar>
     </>
