@@ -10,10 +10,17 @@
 .Mui-selected {
   background-color: #FAF6FF !important;
   border-radius: 5px 5px 0 0 !important;
+  padding: 5px !important;
+  margin: 5px !important;
 }
 .css-19kzrtu {
   padding: 0 !important;
 }
 img{
   width: 100%;
+}
+.css-1nuo49t-MuiButtonBase-root-MuiTab-root {
+  border-radius: 5px 5px 0 0 !important;
+  padding: 5px !important;
+  margin: 5px !important;
 }

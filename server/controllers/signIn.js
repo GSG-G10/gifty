@@ -8,12 +8,12 @@ module.exports = (req, res, next) => {
   if (error) {
     res
       .status(400)
-      .json({ Error: error });
+      .json({ Error: error.details[0].message });
   } else {
     getUserData(email)
       .then(({ rows }) => {
         if (!rows.length) {
-          res.json({ Error: 'You\'ve entered an invalid email' });
+          res.status(400).json({ Error: 'You\'ve entered an invalid email' });
         } else {
           const { password: hashedPassword } = rows[0];
           comparePassword(password, hashedPassword, (err, isMatch) => {
@@ -21,7 +21,7 @@ module.exports = (req, res, next) => {
               req.userId = rows[0].id;
               next();
             } else {
-              res.json({ Error: 'You\'ve entered a wrong password' });
+              res.status(400).json({ Error: 'You\'ve entered a wrong password' });
             }
           });
         }
