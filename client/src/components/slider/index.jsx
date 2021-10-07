@@ -11,7 +11,7 @@ const images = [
   {
     id: 1,
     imgPath:
-      'https://images.unsplash.com/photo-1602566178436-8cf72756f4cb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1470&q=80',
+      'https://images.unsplash.com/photo-1617796993472-7c1a483d3e39?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1178&q=80',
   },
   {
     id: 2,
@@ -48,7 +48,7 @@ const Slider = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: '100%', flexGrow: 1, objectFit: 'cover' }}>
+    <Box sx={{ maxWidth: '100%', flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
@@ -79,6 +79,7 @@ const Slider = () => {
                   height: '86vh',
                   overflow: 'hidden',
                   width: '100%',
+                  objectFit: 'cover',
                 }}
                 src={step.imgPath}
                 alt="Cover"
