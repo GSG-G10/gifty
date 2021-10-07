@@ -1,17 +1,10 @@
 import Landing from "./pages/landing";
-<<<<<<< HEAD
-import Header from  "./components/common/Header"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-=======
 import TabComponent from "./components/Tab";
-import "./App.css";
 import Cart from "./pages/Cart";
->>>>>>> e7d8d172fd94da2174feae803996e8a1cc17ca4a
 
 function App() {
-  return (
-    <div className="App">
-<<<<<<< HEAD
+  return(  <div className="App">
       <Router>
       <Header />
       <Switch >
@@ -21,13 +14,10 @@ function App() {
       </Switch>
       </Router>
       <Landing />
-=======
-      {/* <Landing /> */}
+      
       <TabComponent />
->>>>>>> e7d8d172fd94da2174feae803996e8a1cc17ca4a
     </div>
    
-  );
-}
+  );}
 
 export default App;
