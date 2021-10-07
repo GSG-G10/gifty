@@ -45,7 +45,7 @@ const Header = () => {
           <Link to="/register" className="login-singup-nav">register</Link>
         </div>
         <div className="cart">
-          <Link to="/userProducts">
+          <Link to="/cart">
             <ShoppingCartIcon />
             <span className="cart-top">{basket}</span>
             <span>Cart</span>

@@ -21,8 +21,8 @@ const Overview = ({ product }) => {
   const addToCart = () => {
     axios
       .post('/addToCart', { productId: product.id, quantity })
-      .then((res) => setSuccess(res.msg))
-      .catch((err) => setError(err.response.data.error));
+      .then((res) => setSuccess(res.data.msg))
+      .catch((err) => setError(err.response.data.Error));
   };
 
   const Alert = (props) => (

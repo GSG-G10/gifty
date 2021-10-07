@@ -27,6 +27,9 @@ function App() {
           <Route exact path="/register">
             <Register />
           </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
         </Switch>
       </Router>
   );

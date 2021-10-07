@@ -10,7 +10,8 @@
 }
 
 .logo {
-  width: 150px;
+  width: 120px;
+  height: 60px!important;
 }
 
 .nav-items {
