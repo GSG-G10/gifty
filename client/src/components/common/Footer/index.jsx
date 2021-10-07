@@ -6,7 +6,7 @@ import logo from '../../../assets/gifty.png';
 import './style.css';
 
 const Footer = () => (
-    <footer className="footer">
+    <footer className="footer" id="contact">
         <div className="container">
           <img src={logo} alt="logo img" className="logo"/>
           <nav className="nav">
