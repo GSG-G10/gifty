@@ -8,7 +8,7 @@ const deleteProduct = (req, res, next) => {
     .then(({ rowCount }) => (
       rowCount > 0
         ? res.json({ msg: 'Product Deleted Successfully' })
-        : res.json({ msg: 'Product cannot deleted, something wrong' })
+        : res.status(400).json({ msg: 'Product cannot deleted, something wrong' })
     ))
     .catch((err) => next(err));
 };

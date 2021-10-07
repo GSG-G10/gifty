@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
           },
         )
           .json(
-            { msg: 'cookies sent successfully' },
+            { msg: 'Logged In Successfully' },
           );
       }
     },

@@ -15,6 +15,7 @@ const {
   getComments,
   addUser,
   signIn,
+  logOut,
 } = require('../controllers');
 
 router.delete('/deletePorduct/:productId', checkUser, deleteProduct);
@@ -26,5 +27,6 @@ router.post('/signin', signIn, setCookies);
 router.get('/products', getProducts);
 router.get('/comments/:productId', getComments);
 router.post('/addComment', checkUser, addComment);
+router.get('/logOut', logOut);
 
 module.exports = router;
