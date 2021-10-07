@@ -1,54 +1,64 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActions } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import { useHistory } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActions } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-import "./style.css";
-function ProductCard({ productImage, productName, productPrice }) {
+import './style.css';
+
+function ProductCard({
+  productID, productImage, productName, productPrice,
+}) {
+  const history = useHistory();
+  const handleClick = () => {
+    history.push(`/product/${productID}`);
+  };
   return (
-    <Card variant="outlined">
-      <CardMedia
-        component="img"
-        height="320"
-        image={productImage}
-        alt={productName}
-        sx={{ borderBottom: "1px solid #e0e0e0" }}
-      />
-      <CardContent
-        className="product-content"
-        style={{ padding: "5px 0px 10px" }}
-      >
-        <CardActions
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-          }}
+      <Card variant="outlined" style={{ cursor: 'pointer' }}>
+        <CardMedia
+          component="img"
+          height="320"
+          image={productImage}
+          alt={productName}
+          sx={{ borderBottom: '1px solid #e0e0e0' }}
+          onClick={handleClick}
+        />
+        <CardContent
+          className="product-content"
+          style={{ padding: '5px 0px 10px' }}
         >
-          <Typography
-            className="product-name"
-            gutterBottom
-            variant="div"
-            component="h3"
+          <CardActions
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+            }}
+            onClick={handleClick}
           >
-            {productName}
-          </Typography>
-          <Typography
-            className="product-price"
-            gutterBottom
-            variant="div"
-            component="span"
-          >
-            $ {productPrice}
-          </Typography>
-        </CardActions>
-        <Button size="small">
-          <AddShoppingCartIcon style={{ color: "#000" }} />
-        </Button>
-      </CardContent>
-    </Card>
+            <Typography
+              className="product-name"
+              gutterBottom
+              variant="div"
+              component="h3"
+            >
+              {productName}
+            </Typography>
+            <Typography
+              className="product-price"
+              gutterBottom
+              variant="div"
+              component="span"
+            >
+              $ {productPrice}
+            </Typography>
+          </CardActions>
+          <Button size="small">
+            <AddShoppingCartIcon style={{ color: '#000' }} />
+          </Button>
+        </CardContent>
+      </Card>
   );
 }
 

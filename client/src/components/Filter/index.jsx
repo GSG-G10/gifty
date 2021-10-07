@@ -28,7 +28,7 @@ function Filter({ products, setFilterProducts }) {
   const handleSearchPopClose = () => setSearchPop(null);
   const handlePricePopClick = (event) => setPricePop(event.currentTarget);
   const handlePricePopClose = () => setPricePop(null);
-  const handleSearchChange = (e) => setSearchValue(e.target.value);
+  const handleSearchChange = (e) => setSearchValue(e.target.value.toLowerCase());
   const handleCategoryChange = (e) => setCategory(e.target.textContent);
   const handleMinPrice = (value) => setMinPrice(value);
   const handleMaxPrice = (value) => setMaxPrice(value);
@@ -42,7 +42,7 @@ function Filter({ products, setFilterProducts }) {
             ? elem.category === category
             : elem.category === elem.category)
           && (searchValue
-            ? elem.name.includes(searchValue)
+            ? elem.name.toLowerCase().includes(searchValue)
             : elem.name === elem.name),
       );
       return newState;

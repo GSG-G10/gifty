@@ -22,19 +22,21 @@ function ProductsContainer({
         <Filter products={products} setFilterProducts={setFilterProducts} />
       </Box>
       <section className="products-container">
-        {!loading
-          ? filterdProducts.map((product, index) => {
-            if (index + 1 > page * 6 - 6 && index + 1 <= page * 6) {
-              return (
+      {filterdProducts.length ? !loading
+        ? filterdProducts.map((product, index) => {
+          if (index + 1 > page * 6 - 6 && index + 1 <= page * 6) {
+            return (
               <ProductCard
                 key={index}
+                productID={product.id}
                 productImage={product.img}
                 productName={product.name}
                 productPrice={product.price}
               />
-              );
-            }
-          }) : [1, 2, 3, 4, 5, 6].map((key) => <ProductCardSkeleton key={key} />)}
+            );
+          }
+        }) : [1, 2, 3, 4, 5, 6].map((key) => <ProductCardSkeleton key={key} />) : <h2 style={{ textAlign: 'center', gridColumn: '1/4' }}>No Data to show!</h2>}
+
       </section>
       {filterdProducts.length > 6 ? (
         <Pagination

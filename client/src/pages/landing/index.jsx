@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
-import { Slider } from '../../components/slider';
+import Slider from '../../components/slider';
 import ProductsContainer from '../../components/ProductsContainer';
 
 function Landing() {
