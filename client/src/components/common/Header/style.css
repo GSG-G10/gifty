@@ -1,0 +1,60 @@
+.container {
+  width: 85%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  font-size: 15px;
+  text-transform: capitalize;
+  border-bottom: 1px solid rgb(231, 223, 223);
+}
+
+.logo {
+  width: 150px;
+}
+
+.nav-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+}
+.nav-items a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+  font-size: 18px;
+  transition: 0.2s all;
+}
+.nav-items a:hover,
+.login-singup-nav:hover {
+  color: #635e8b;
+}
+.cart {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.cart a {
+  text-decoration: none;
+  color: #000;
+}
+.cart-top {
+  position: absolute;
+  top: -21px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.login-singup-nav {
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+  font-size: 16px;
+  transition: 0.2s all;
+}

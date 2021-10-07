@@ -14,9 +14,9 @@ function ProductsContainer({
 }) {
   const [page, setPage] = useState(1);
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" id="products">
       <Box sx={{
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '40px 0',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', margin: '40px 0',
       }}>
         <SectionTitle content="All Product" />
         <Filter products={products} setFilterProducts={setFilterProducts} />
