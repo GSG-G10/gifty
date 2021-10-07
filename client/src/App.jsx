@@ -1,7 +1,7 @@
-import Landing from "./pages/landing";
-import TabComponent from "./components/Tab";
-import "./App.css";
-import Cart from "./pages/Cart";
+import Landing from './pages/landing';
+import TabComponent from './components/Tab';
+import './App.css';
+import Register from './pages/Register';
 
 function App() {
   return (

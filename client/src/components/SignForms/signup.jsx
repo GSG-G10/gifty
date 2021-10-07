@@ -31,17 +31,12 @@ function signup() {
         })
           .then((response) => response.data)
           .then((data) => {
-            if (data.Error) {
-              setSuccess('');
-              setError(data.Error);
-            } else {
-              setError('');
-              setSuccess(data.msg);
-            }
+            setError('');
+            setSuccess(data.msg);
           })
-          .catch(() => {
+          .catch((err) => {
             setSuccess('');
-            setError('Error');
+            setError(err.response.data.Error);
           });
       } else {
         setSuccess('');
