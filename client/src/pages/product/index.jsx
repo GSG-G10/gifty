@@ -1,20 +1,52 @@
-import React from "react";
+import { useState, useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
+import Overview from '../../components/overview';
+import TabComponent from '../../components/Tab';
+// import RelatedProducts from '../../components/RelatedProducts';
 
-import axios from "axios";
+function Product() {
+  const [product, setProduct] = useState([]);
+  const [error, setError] = useState(false);
 
-import { Overview } from "../../components/overview";
+  const productId = 1;
+  // const { productId } = useParams();
 
-function Product({ productId }) {
-  const [product, setProduct] = React.useState([]);
-
-  React.useEffect(() => {
+  useEffect(() => {
     axios
       .get(`/product/${productId}`)
       .then((res) => res.data.data[0])
-      .then((res) => setProduct(res));
+      .then((res) => setProduct(res))
+      .catch(() => setError(true));
   }, []);
 
-  return <Overview product={product} />;
+  const Alert = (props) => (
+    <MuiAlert elevation={6} variant="filled" {...props} />
+  );
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setError(false);
+  };
+
+  return (
+    <>
+    {product ? (
+    <>
+    <Overview product={product} />
+    <TabComponent description={product.description} productId={productId} />
+    {/* <RelatedProducts relatedCategory={product.category} /> */}
+    </>
+    ) : null }
+
+    <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
+      <Alert severity="error">An Error Occurred!</Alert>
+    </Snackbar>
+    </>
+  );
 }
 
 export default Product;

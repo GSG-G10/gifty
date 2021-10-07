@@ -1,13 +1,10 @@
-import Landing from "./pages/landing";
-import TabComponent from "./components/Tab";
-import "./App.css";
-import Cart from "./pages/Cart";
+import Product from './pages/product';
 
 function App() {
   return (
     <div className="App">
-      {/* <Landing /> */}
-      <TabComponent />
+      <Product />
+
     </div>
   );
 }

@@ -27,7 +27,8 @@
         "express": "^4.17.1",
         "joi": "^17.4.2",
         "jsonwebtoken": "^8.5.1",
-        "pg": "^8.5.1"
+        "pg": "^8.5.1",
+        "prop-types": "^15.7.2"
     },
     "homepage": "https://github.com/GSG-G10/gifty#readme",
     "devDependencies": {
