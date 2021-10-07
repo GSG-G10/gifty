@@ -11,7 +11,7 @@ function Product() {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(false);
 
-  const productId = 1;
+  const productId = 11;
   // const { productId } = useParams();
 
   useEffect(() => {
@@ -34,13 +34,11 @@ function Product() {
 
   return (
     <>
-    {product ? (
     <>
     <Overview product={product} />
     <TabComponent description={product.description} productId={productId} />
     {/* <RelatedProducts relatedCategory={product.category} /> */}
     </>
-    ) : null }
 
     <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
       <Alert severity="error">An Error Occurred!</Alert>

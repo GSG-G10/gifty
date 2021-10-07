@@ -39,9 +39,8 @@ function TabComponent({ description, productId }) {
   const [value, setValue] = useState(0);
   const [addComment, setAddComment] = useState('');
   const [comments, setComments] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
 
   const Alert = (props) => (
     <MuiAlert elevation={6} variant="filled" {...props} />
@@ -51,7 +50,7 @@ function TabComponent({ description, productId }) {
     if (reason === 'clickaway') {
       return;
     }
-    setError(false);
+    setError('');
   };
 
   useEffect(() => {
@@ -59,14 +58,9 @@ function TabComponent({ description, productId }) {
       .get(`/comments/${productId}`)
       .then((response) => response.data)
       .then(({ data }) => setComments(data))
-      .catch(() => setError(true));
+      .catch((err) => setError(err.response.data.Error));
   }, []);
 
-  TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.number.isRequired,
-    value: PropTypes.number.isRequired,
-  };
   const a11yProps = (index) => ({
     id: `simple-tab-${index}`,
     'aria-controls': `simple-tabpanel-${index}`,
@@ -124,6 +118,7 @@ function TabComponent({ description, productId }) {
         </Box>
         <TabPanel value={value} index={0}>
           <Card
+          className='card'
             component="div"
             sx={{
               width: '100%',
@@ -138,6 +133,7 @@ function TabComponent({ description, productId }) {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <Card
+            className='card'
             component="div"
             sx={{
               width: '100%',
@@ -162,6 +158,7 @@ function TabComponent({ description, productId }) {
           {comments.length
             ? comments.map((elem) => (
                   <Card
+                  className='card'
                   key={elem.description}
                     sx={{
                       backgroundColor: '#FAF6FF',
@@ -202,10 +199,10 @@ function TabComponent({ description, productId }) {
         </TabPanel>
       </Box>
 
-      <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
-        <Alert severity="error">An Error Occurred!</Alert>
+      <Snackbar open={Boolean(error)} autoHideDuration={10000} onClose={handleClose}>
+        <Alert severity="error">{error}</Alert>
       </Snackbar>
-      <Snackbar open={isSuccess} autoHideDuration={10000} onClose={handleClose}>
+      <Snackbar open={Boolean(success)} autoHideDuration={10000} onClose={handleClose}>
         <Alert severity="success">{success}</Alert>
       </Snackbar>
     </>
