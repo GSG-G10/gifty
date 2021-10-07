@@ -2,28 +2,36 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from 'react-router-dom'; import Landing from './pages/landing';
-import Register from './pages/Register';
+} from 'react-router-dom';
+import Landing from './pages/landing';
+import Product from './pages/product';
 import Cart from './pages/Cart';
+import Register from './pages/Register';
+import Header from './components/common/Header';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
       <Router>
+        <Header />
         <Switch>
-          <Route exact path="/register">
-            <Register />
-          </Route>
           <Route exact path="/">
             <Landing />
+          </Route>
+          <Route exact path="/product/:productId">
+            <Product />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
+          </Route>
+          <Route exact path="/register">
+            <Register />
           </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
         </Switch>
       </Router>
-    </div>
   );
 }
 

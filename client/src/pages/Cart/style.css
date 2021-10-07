@@ -9,13 +9,6 @@
         margin: 10vh auto;
         min-height: 1000px;
     }
-    
-    h1 {
-        display: inline-block;
-        margin-top: 20px;
-        border-bottom: 1px solid black;
-    }
-    
     .header-list {
         margin-top: 50px;
         list-style: none;
@@ -29,7 +22,7 @@
         margin-right: 180px;
     }
     
-    img {
+    .img {
         width: 90px;
     }
     
@@ -40,7 +33,6 @@
         border-bottom: 1px solid rgb(216, 213, 213);
         padding: 20px;
     }
-    
     .price {
         margin-left: 10px;
     }
@@ -50,19 +42,12 @@
         align-items: center;
         width: 193px;
     }
-    
     .total-price {
         display: flex;
         justify-content: flex-end;
         align-items: center;
         margin-top: 20px;
-    }
-    
-    h2 {
-        margin-right: 70px;
-        text-decoration: underline;
-    }
-    
+    }    
     .buy-container {
         display: flex;
         background-color: #a794c1;
@@ -86,5 +71,4 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-right: -7px;
     }

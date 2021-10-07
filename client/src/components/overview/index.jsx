@@ -1,65 +1,61 @@
-import * as React from 'react';
-
+import { useState } from 'react';
 import axios from 'axios';
-
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import ImageListItem from '@mui/material/ImageListItem';
-
+import { Snackbar, Card } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import './index.css';
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-  height: '94%',
-  borderRadius: '0',
-}));
-
 const Overview = ({ product }) => {
-  const [quantity, setQuantity] = React.useState(1);
-  const [stars, setStars] = React.useState(0);
-  const [message, setMessage] = React.useState('');
+  const [quantity, setQuantity] = useState(1);
+  const [stars, setStars] = useState(0);
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const addToCart = () => {
     axios
-      .post('/addToCart', { productId: product.id })
-      .then((res) => res.json())
-      .then((res) => setMessage(res.msg))
-      .catch((err) => setMessage(err));
+      .post('/addToCart', { productId: product.id, quantity })
+      .then((res) => setSuccess(res.data.msg))
+      .catch((err) => setError(err.response.data.Error));
   };
-  return (product && (<Box className="Overview" sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2} columns={18}>
-        <Grid item xs={4}>
+
+  const Alert = (props) => (
+    <MuiAlert elevation={6} variant="filled" {...props} />
+  );
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setError(false);
+  };
+
+  return (
+    <>
+    <Box className="Overview" >
+        <Box className='img-container'>
           <ImageListItem className="productImg">
-            <img style={{ width: '100%' }} src={product.img} alt="sss" />
+            <img style={{ width: '100%' }} src={product.img} alt={`${product.name} img`} />
           </ImageListItem>
-        </Grid>
-        <Grid item xs={4}>
-          <Item>
-            <CardContent
-              style={{
-                width: '95%',
-              }}
-            >
+        </Box>
+        <Card className='info-container'>
+            <CardContent>
               <div
                 style={{
                   display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '.7vw',
+                  flexDirection: 'column',
                   borderBottom: '0',
                   boxShadow: '0 1px 0px 0 hsla(0,0%,0%,.2)',
                 }}
               >
-                <Typography variant="h4" component="div">
+                <Typography variant="h5" component="div" style={{
+                  marginBottom: '10px', fontWeight: 700,
+                }}>
                   {product.name}
                 </Typography>
                 <Typography variant="body2">
@@ -67,38 +63,50 @@ const Overview = ({ product }) => {
                     name="disabled"
                     value={stars}
                     onChange={(e) => setStars(e.target.value)}
+                    style={{ marginBottom: '15px' }}
                   />
                 </Typography>
               </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Typography
-                variant="h3"
+                variant="h5"
                 sx={{ mb: 1.5 }}
-                style={{ marginTop: '4vh' }}
+                style={{ marginTop: '4vh', fontWeight: 'bold' }}
               >
                 $ {quantity * product.price}.00
               </Typography>
-              <Typography variant="h7" sx={{ mb: 1.5 }}>
-                {product.description}
+              <Typography
+                variant="h5"
+                sx={{ mb: 1.5 }}
+                style={{ marginTop: '4vh', fontSize: '1rem', color: '#AC7D02' }}
+              >
+                In Stock
+              </Typography>
+              </div>
+              <Typography variant="h7" sx={{ mb: '1.5vh', fontSize: '.9rem', fontWeight: '600' }}>
+                Free Shipping to Gaza
               </Typography>
             </CardContent>
-            <CardActions
-              style={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-              }}
-            >
+            <CardActions >
+               <div style={{
+                 width: '100%',
+                 display: 'flex',
+                 flexDirection: 'column',
+                 alignItems: 'flex-start',
+                 justifyContent: 'space-between',
+                 padding: '10px',
+               }}>
+              <Typography variant="h7" sx={{ mb: 1.5 }}>
+                Quantity :
+              </Typography>
               <div
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
                   justifyContent: 'space-between',
                   height: '8vh',
+                  width: '100%',
                 }}
               >
-                <Typography variant="h7" sx={{ mb: 1.5 }}>
-                  Quantity :
-                </Typography>
                 <input
                   type="number"
                   min="1"
@@ -106,33 +114,42 @@ const Overview = ({ product }) => {
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                   style={{
-                    width: '40%',
-                    height: '5vh',
+                    width: '14%',
+                    height: '9vh',
                     fontSize: '1.5rem',
-                    border: '.7px solid #BDB9DC',
+                    border: '2px solid #BDB9DC',
+                    borderRadius: '5px',
+                    textAlign: 'center',
+                    padding: '10px',
                   }}
                 />
-              </div>
               <Button
                 style={{
                   backgroundColor: '#BDB9DC',
                   color: '#0B2F4A',
-                  width: '50%',
-                  height: '5vh',
+                  width: '80%',
+                  height: '9vh',
+                  fontWeight: 'bold',
                 }}
                 size="large"
-                onClick={product.length > 0 && addToCart}
+                onClick={addToCart}
               >
                 Add to Cart
+                <AddShoppingCartIcon style={{ color: '#0B2F4A', marginLeft: '20px' }} />
               </Button>
+              </div>
+              </div>
             </CardActions>
-            {message}
-          </Item>
-        </Grid>
-      </Grid>
-    </Box>)
+        </Card>
+    </Box>
+    <Snackbar open={Boolean(error)} autoHideDuration={10000} onClose={handleClose}>
+      <Alert severity="error">{error}</Alert>
+    </Snackbar>
+    <Snackbar open={Boolean(success)} autoHideDuration={10000} onClose={handleClose}>
+      <Alert severity="success">{success}</Alert>
+    </Snackbar>
+        </>
 
   );
 };
-
 export default Overview;

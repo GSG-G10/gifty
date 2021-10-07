@@ -10,6 +10,7 @@
 .Mui-selected {
   background-color: #FAF6FF !important;
   border-radius: 5px 5px 0 0 !important;
+  font-weight: 800 !important;
   padding: 5px !important;
   margin: 5px !important;
 }
@@ -18,6 +19,10 @@
 }
 img{
   width: 100%;
+}
+.card{
+  background-color: #FAF6FF !important;
+  padding: 20px!important;
 }
 .css-1nuo49t-MuiButtonBase-root-MuiTab-root {
   border-radius: 5px 5px 0 0 !important;

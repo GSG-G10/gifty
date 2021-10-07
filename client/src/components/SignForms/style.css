@@ -22,9 +22,6 @@
   flex-direction: column;
  align-items: center;
 }
-.MuiButton-label{
-  font-size: 1.3rem;
-}
 .input{
   margin-bottom: 2vh !important;
 }
