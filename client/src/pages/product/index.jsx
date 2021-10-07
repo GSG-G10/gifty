@@ -5,7 +5,7 @@ import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import Overview from '../../components/overview';
 import TabComponent from '../../components/Tab';
-// import RelatedProducts from '../../components/RelatedProducts';
+import RelatedProducts from '../../components/RelatedProducts';
 
 function Product() {
   const [product, setProduct] = useState([]);
@@ -34,11 +34,15 @@ function Product() {
 
   return (
     <>
-    <>
+    {product.id
+      ? <>
     <Overview product={product} />
     <TabComponent description={product.description} productId={productId} />
-    {/* <RelatedProducts relatedCategory={product.category} /> */}
+    <RelatedProducts relatedCategory={product.category} />
     </>
+      : null
+
+}
 
     <Snackbar open={error} autoHideDuration={10000} onClose={handleClose}>
       <Alert severity="error">An Error Occurred!</Alert>

@@ -5,7 +5,6 @@ import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
-import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -13,14 +12,6 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { Snackbar, Card } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import './index.css';
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-  height: '94%',
-  borderRadius: '0',
-}));
 
 const Overview = ({ product }) => {
   const [quantity, setQuantity] = useState(1);

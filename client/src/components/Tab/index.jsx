@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Card from '@mui/material/Card';
@@ -13,27 +12,7 @@ import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import './style.css';
 import rateImg from './rate.png';
-
-function TabPanel(props) {
-  const {
-    children, value, index, ...other
-  } = props;
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
+import TabPanel from '../common/TabPanel';
 
 function TabComponent({ description, productId }) {
   const [value, setValue] = useState(0);
@@ -89,10 +68,9 @@ function TabComponent({ description, productId }) {
             return newState;
           });
           setAddComment('');
-          setIsSuccess(true);
           setSuccess(data.msg);
         })
-        .catch(() => setError(true));
+        .catch((err) => setError(err.response.data.Error));
     }
   };
 

@@ -1,11 +1,12 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { Button, CardActions } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+import { Button, CardActions } from '@mui/material';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
-import "./style.css";
+import './style.css';
+
 function ProductCard({ productImage, productName, productPrice }) {
   return (
     <Card variant="outlined">
@@ -14,17 +15,17 @@ function ProductCard({ productImage, productName, productPrice }) {
         height="320"
         image={productImage}
         alt={productName}
-        sx={{ borderBottom: "1px solid #e0e0e0" }}
+        sx={{ borderBottom: '1px solid #e0e0e0' }}
       />
       <CardContent
         className="product-content"
-        style={{ padding: "5px 0px 10px" }}
+        style={{ padding: '5px 0px 10px' }}
       >
         <CardActions
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'flex-start',
           }}
         >
           <Typography
@@ -45,7 +46,7 @@ function ProductCard({ productImage, productName, productPrice }) {
           </Typography>
         </CardActions>
         <Button size="small">
-          <AddShoppingCartIcon style={{ color: "#000" }} />
+          <AddShoppingCartIcon style={{ color: '#000' }} />
         </Button>
       </CardContent>
     </Card>

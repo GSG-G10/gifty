@@ -1,13 +1,30 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Carousel from 'react-multi-carousel';
 import Container from '@mui/material/Container';
 import ProductCard from '../ProductsContainer/ProductCard';
 import 'react-multi-carousel/lib/styles.css';
+import SectionTitle from '../common/SectionTitle';
 import './style.css';
 
 function RelatedProducts({ relatedCategory }) {
-  const filterdProducts = () => products.filter(({ category }) => category === relatedCategory);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    axios
+      .get('/products')
+      .then((response) => response.data.data)
+      .then((data) => {
+        setProducts(data.filter(({ category }) => category === relatedCategory));
+      })
+      .catch((err) => setError(err.response.data.Error));
+  }, []);
+
   return (
-    <Container maxWidth="md">
+
+    <Container style={{ width: '80%' }}>
+      <SectionTitle content='Related Product' />
       <Carousel
         additionalTransfrom={0}
         arrows
@@ -47,7 +64,7 @@ function RelatedProducts({ relatedCategory }) {
         slidesToSlide={1}
         swipeable
   >
-    {filterdProducts().map(({ img, name, price }) => <ProductCard productImage={img} productName={name} productPrice={price} />)}
+    {products.map(({ img, name, price }) => <ProductCard productImage={img} productName={name} productPrice={price} />)}
 
   </Carousel>
 </Container>

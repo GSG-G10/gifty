@@ -9,6 +9,7 @@
 .img-container{
     width: 40%;
     border-radius: 10px !important;
+    height: 100%;
 }
 .info-container{
     width: 59%;
