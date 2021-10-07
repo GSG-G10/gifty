@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+import SearchIcon from '@mui/icons-material/Search';
+import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined';
 import {
   ButtonGroup,
   Button,
@@ -6,12 +8,12 @@ import {
   Slider,
   Popover,
   Typography,
-} from "@material-ui/core";
-import "./style.css";
+} from '@material-ui/core';
+import './style.css';
 
 function Filter({ products, setFilterProducts }) {
-  const [category, setCategory] = useState("all");
-  const [searchValue, setSearchValue] = useState("");
+  const [category, setCategory] = useState('all');
+  const [searchValue, setSearchValue] = useState('');
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(500);
   const [searchPop, setSearchPop] = useState(null);
@@ -19,14 +21,14 @@ function Filter({ products, setFilterProducts }) {
 
   const openS = Boolean(searchPop);
   const openP = Boolean(pricePop);
-  const searchId = openS ? "search-popover" : undefined;
-  const priceId = openP ? "price-popover" : undefined;
+  const searchId = openS ? 'search-popover' : undefined;
+  const priceId = openP ? 'price-popover' : undefined;
 
   const handleSearchPopClick = (event) => setSearchPop(event.currentTarget);
   const handleSearchPopClose = () => setSearchPop(null);
   const handlePricePopClick = (event) => setPricePop(event.currentTarget);
   const handlePricePopClose = () => setPricePop(null);
-  const handleSearchChange = (e) => setSearchValue(e.target.value);
+  const handleSearchChange = (e) => setSearchValue(e.target.value.toLowerCase());
   const handleCategoryChange = (e) => setCategory(e.target.textContent);
   const handleMinPrice = (value) => setMinPrice(value);
   const handleMaxPrice = (value) => setMaxPrice(value);
@@ -34,15 +36,14 @@ function Filter({ products, setFilterProducts }) {
   useEffect(() => {
     setFilterProducts((prev) => {
       const newState = products.filter(
-        (elem) =>
-          elem.price >= minPrice &&
-          elem.price <= maxPrice &&
-          (category !== "all"
+        (elem) => elem.price >= minPrice
+          && elem.price <= maxPrice
+          && (category !== 'all'
             ? elem.category === category
-            : elem.category === elem.category) &&
-          (searchValue
-            ? elem.name.includes(searchValue)
-            : elem.name === elem.name)
+            : elem.category === elem.category)
+          && (searchValue
+            ? elem.name.toLowerCase().includes(searchValue)
+            : elem.name === elem.name),
       );
       return newState;
     });
@@ -51,16 +52,17 @@ function Filter({ products, setFilterProducts }) {
   return (
     <>
       <div className="filter-container">
-        <div class="search-price-container">
+        <div className="search-price-container">
           <Button
             aria-describedby={searchId}
             onClick={handleSearchPopClick}
             style={{
               fontWeight: 600,
-              backgroundColor: "rgb(167 148 193 / 38%)",
+              backgroundColor: 'rgb(167 148 193 / 38%)',
+              minWidth: 'fit-content',
             }}
           >
-            search
+            <SearchIcon />
           </Button>
           <Popover
             id={searchId}
@@ -68,12 +70,12 @@ function Filter({ products, setFilterProducts }) {
             anchorEl={searchPop}
             onClose={handleSearchPopClose}
             anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
+              vertical: 'bottom',
+              horizontal: 'center',
             }}
             transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
+              vertical: 'top',
+              horizontal: 'center',
             }}
           >
             <Typography>
@@ -81,7 +83,7 @@ function Filter({ products, setFilterProducts }) {
                 <InputBase
                   onChange={handleSearchChange}
                   placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
+                  inputProps={{ 'aria-label': 'search' }}
                 />
               </div>
             </Typography>
@@ -92,11 +94,12 @@ function Filter({ products, setFilterProducts }) {
             onClick={handlePricePopClick}
             style={{
               fontWeight: 600,
-              backgroundColor: "rgb(167 148 193 / 38%)",
-              marginLeft: "10px",
+              backgroundColor: 'rgb(167 148 193 / 38%)',
+              marginLeft: '10px',
+              textTransform: 'capitalize',
             }}
           >
-            price
+            Price <KeyboardArrowDownOutlinedIcon />
           </Button>
           <Popover
             id={priceId}
@@ -104,18 +107,18 @@ function Filter({ products, setFilterProducts }) {
             anchorEl={pricePop}
             onClose={handlePricePopClose}
             anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "center",
+              vertical: 'bottom',
+              horizontal: 'center',
             }}
             transformOrigin={{
-              vertical: "top",
-              horizontal: "center",
+              vertical: 'top',
+              horizontal: 'center',
             }}
           >
             <Typography>
               <div className="price-pop">
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                   <Typography id="discrete-slider-custom" gutterBottom>
                     Min Price:
@@ -127,13 +130,13 @@ function Filter({ products, setFilterProducts }) {
                     step={10}
                     valueLabelDisplay="auto"
                     style={{
-                      width: "72%",
-                      color: "#a794c1",
+                      width: '72%',
+                      color: '#a794c1',
                     }}
                   />
                 </div>
                 <div
-                  style={{ display: "flex", justifyContent: "space-between" }}
+                  style={{ display: 'flex', justifyContent: 'space-between' }}
                 >
                   <Typography id="discrete-slider-custom" gutterBottom>
                     Max Price:
@@ -145,7 +148,7 @@ function Filter({ products, setFilterProducts }) {
                     aria-labelledby="discrete-slider-custom"
                     step={10}
                     valueLabelDisplay="auto"
-                    style={{ width: "72%", color: "#a794c1" }}
+                    style={{ width: '72%', color: '#a794c1' }}
                   />
                 </div>
               </div>
@@ -158,44 +161,44 @@ function Filter({ products, setFilterProducts }) {
           aria-label="contained primary button group"
         >
           <Button
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             classes={{
-              label: category === "all" ? "active-category" : "category-btn",
+              label: category === 'all' ? 'active-category' : 'category-btn',
             }}
           >
             all
           </Button>
           <Button
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             classes={{
               label:
-                category === "flowers" ? "active-category" : "category-btn",
+                category === 'flowers' ? 'active-category' : 'category-btn',
             }}
           >
             flowers
           </Button>
           <Button
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             classes={{
               label:
-                category === "accessories" ? "active-category" : "category-btn",
+                category === 'accessories' ? 'active-category' : 'category-btn',
             }}
           >
             accessories
           </Button>
           <Button
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             classes={{
               label:
-                category === "perfumes" ? "active-category" : "category-btn",
+                category === 'perfumes' ? 'active-category' : 'category-btn',
             }}
           >
             perfumes
           </Button>
           <Button
-            style={{ border: "none" }}
+            style={{ border: 'none' }}
             classes={{
-              label: category === "sweets" ? "active-category" : "category-btn",
+              label: category === 'sweets' ? 'active-category' : 'category-btn',
             }}
           >
             sweets

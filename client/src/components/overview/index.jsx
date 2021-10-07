@@ -2,7 +2,6 @@ import { useState } from 'react';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';

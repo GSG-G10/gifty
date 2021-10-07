@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
@@ -10,9 +10,7 @@ import RelatedProducts from '../../components/RelatedProducts';
 function Product() {
   const [product, setProduct] = useState([]);
   const [error, setError] = useState(false);
-
-  const productId = 11;
-  // const { productId } = useParams();
+  const { productId } = useParams();
 
   useEffect(() => {
     axios
