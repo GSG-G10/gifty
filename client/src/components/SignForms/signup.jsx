@@ -10,9 +10,7 @@ import axios from 'axios';
 import './style.css';
 
 function signup() {
-  const [isError, setIsError] = useState(false);
   const [error, setError] = useState('');
-  const [isSuccess, setIsSuccess] = useState(false);
   const [success, setSuccess] = useState('');
   const [username, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -34,27 +32,19 @@ function signup() {
           .then((response) => response.data)
           .then((data) => {
             if (data.Error) {
-              setIsSuccess(false);
               setSuccess('');
-              setIsError(true);
               setError(data.Error);
             } else {
-              setIsError(false);
               setError('');
-              setIsSuccess(true);
               setSuccess(data.msg);
             }
           })
           .catch(() => {
-            setIsSuccess(false);
             setSuccess('');
-            setIsError(true);
             setError('Error');
           });
       } else {
-        setIsSuccess(false);
         setSuccess('');
-        setIsError(true);
         setError('Password and confirm password does not match.');
       }
     }
@@ -64,7 +54,7 @@ function signup() {
     if (reason === 'clickaway') {
       return;
     }
-    setIsError(false);
+    setError('');
   };
   const Alert = (props) => (
     <MuiAlert elevation={6} variant="filled" {...props} />
@@ -94,10 +84,10 @@ function signup() {
       }} > Sign Up</Button>
       </form>
     </Box>
-          <Snackbar open={isError} autoHideDuration={10000} onClose={handleClose}>
+          <Snackbar open={Boolean(error)} autoHideDuration={10000} onClose={handleClose}>
           <Alert severity="error">{error}</Alert>
         </Snackbar>
-        <Snackbar open={isSuccess} autoHideDuration={10000} onClose={handleClose}>
+        <Snackbar open={Boolean(success)} autoHideDuration={10000} onClose={handleClose}>
           <Alert severity="success">{success}</Alert>
         </Snackbar>
         </>

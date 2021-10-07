@@ -9,15 +9,16 @@ import './style.css';
 function Signin() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [values, setValues] = useState({ password: '', email: '' });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handleSubmit = (e) => {
-    if (values.password && values.email) {
+    if (password && email) {
       e.preventDefault();
       axios
         .post('/signin', {
-          email: values.email,
-          password: values.password,
+          email,
+          password,
         })
         .then((response) => response.data)
         .then((data) => {
@@ -39,8 +40,12 @@ function Signin() {
   const Alert = (props) => (
     <MuiAlert elevation={6} variant="filled" {...props} />
   );
-  const handleChange = (prop) => (event) => {
-    setValues({ ...values, [prop]: event.target.value });
+  const handleChange = (event) => {
+    if (event.target.name === 'email') {
+      setEmail(event.target.value);
+    } else {
+      setPassword(event.target.value);
+    }
   };
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -60,18 +65,20 @@ function Signin() {
             fullWidth
             type="email"
             variant="outlined"
-            value={values.email}
-            onChange={handleChange('email')}
+            value={email}
+            name='email'
+            onChange={handleChange}
           />
           <TextField
             required
             id="standard-email-input"
             label="Password"
             type="password"
-            value={values.password}
+            value={password}
             fullWidth
+            name='password'
             variant="outlined"
-            onChange={handleChange('password')}
+            onChange={handleChange}
           />
           <Button
             size="larg"
