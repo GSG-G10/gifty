@@ -1,10 +1,11 @@
 const joi = require('joi');
 
 const signupSchema = joi.object({
-  username: joi.string().pattern(new RegExp('^[A-Za-z][A-Za-z0-9_]{7,18}$')).required(),
+  username: joi.string().required(),
   email: joi.string().email().required(),
   password: joi.string().alphanum().min(6).required(),
-  confirmpassword: joi.ref('password'),
+  confirmPassword: joi.ref('password'),
+  role: joi.required(),
 });
 
 module.exports = signupSchema;

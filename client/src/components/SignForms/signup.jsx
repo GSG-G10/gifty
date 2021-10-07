@@ -18,16 +18,18 @@ function signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPssword] = useState('');
+  const [role, setRole] = useState('Customer');
 
   const submit = (e) => {
     if (password && email && username && confirmPassword) {
       e.preventDefault();
       if (password === confirmPassword) {
-        axios.post('./signup', {
+        axios.post('/signup', {
           username,
           email,
           password,
           confirmPassword,
+          role,
         })
           .then((response) => response.data)
           .then((data) => {
@@ -76,7 +78,7 @@ function signup() {
       <TextField className='input' required variant="outlined" fullWidth type="email" label="Email" id="fullWidth" onChange={(event) => setEmail(event.target.value)} />
       <TextField className='input' required variant="outlined" fullWidth type="password" label="Password" id="fullWidth" onChange={(event) => setPassword(event.target.value)} />
       <TextField className='input' required variant="outlined" fullWidth type="password" label="Confirm Password" id="fullWidth" onChange={(event) => setConfirmPssword(event.target.value)} />
-      <RadioGroup style={{ display: 'flex', justifyContent: 'space-between', padding: 2 }} row aria-label="gender" name="row-radio-buttons-group">
+      <RadioGroup defaultValue='Customer' onChange={(e) => setRole(e.target.value)} style={{ display: 'flex', justifyContent: 'space-between', padding: 2 }} row aria-label="gender" name="row-radio-buttons-group">
       <label>Are you a:  </label>
       <div>
         <FormControlLabel value="Seller" control={<Radio />} label="Seller" />

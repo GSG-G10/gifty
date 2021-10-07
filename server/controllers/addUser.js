@@ -3,10 +3,10 @@ const { addUserQuery, getUserId } = require('../database/queries');
 
 const addUser = (req, res, next) => {
   const {
-    email, password, username, confirmPassword,
+    email, password, username, confirmPassword, role,
   } = req.body;
   const { error } = signupSchema.validate({
-    email, password, username, confirmPassword,
+    email, password, username, confirmPassword, role,
   });
   if (error) {
     res
