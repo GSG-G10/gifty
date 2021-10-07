@@ -6,6 +6,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import Overview from '../../components/overview';
 import TabComponent from '../../components/Tab';
 import RelatedProducts from '../../components/RelatedProducts';
+import Footer from '../../components/common/Footer';
 
 function Product() {
   const [product, setProduct] = useState([]);
@@ -37,6 +38,7 @@ function Product() {
     <Overview product={product} />
     <TabComponent description={product.description} productId={productId} />
     <RelatedProducts relatedCategory={product.category} />
+    <Footer />
     </>
       : null
 

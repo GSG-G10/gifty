@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Snackbar } from '@material-ui/core';
+import MuiAlert from '@material-ui/lab/Alert';
 import axios from 'axios';
 import Carousel from 'react-multi-carousel';
 import Container from '@mui/material/Container';
@@ -18,12 +20,23 @@ function RelatedProducts({ relatedCategory }) {
       .then((data) => {
         setProducts(data.filter(({ category }) => category === relatedCategory));
       })
-      .catch((err) => setError(err.response.data.Error));
+      .catch(() => setError('An Error Occurred!'));
   }, []);
 
-  return (
+  const Alert = (props) => (
+    <MuiAlert elevation={6} variant="filled" {...props} />
+  );
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setError('');
+  };
 
-    <Container style={{ width: '80%' }}>
+  return (
+    <>
+
+    <Container style={{ width: '80%', margin: '10vh auto' }}>
       <SectionTitle content='Related Product' />
       <Carousel
         additionalTransfrom={0}
@@ -68,6 +81,10 @@ function RelatedProducts({ relatedCategory }) {
 
   </Carousel>
 </Container>
+      <Snackbar open={Boolean(error)} autoHideDuration={10000} onClose={handleClose}>
+      <Alert severity="error">{error}</Alert>
+    </Snackbar>
+</>
   );
 }
 
