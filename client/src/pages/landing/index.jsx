@@ -37,7 +37,7 @@ function Landing() {
 
   return (
     <>
-      <Slider / >
+      <Slider />
       <ProductsContainer
       products={products}
       setFilterProducts={setFilterProducts}
