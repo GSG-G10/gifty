@@ -3,7 +3,8 @@ import {
   Switch,
   Route,
 } from 'react-router-dom'; import Landing from './pages/landing';
-import Product from './pages/product';
+import Register from './pages/Register';
+import Cart from './pages/Cart';
 import './App.css';
 
 function App() {
@@ -11,11 +12,14 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/product/:productId">
-            <Product />
+          <Route exact path="/register">
+            <Register />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <Landing />
+          </Route>
+          <Route exact path="/cart">
+            <Cart />
           </Route>
         </Switch>
       </Router>

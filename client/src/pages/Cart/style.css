@@ -2,13 +2,11 @@
         margin: 0px;
         padding: 0px;
         box-sizing: border-box;
-        font-family: Roboto;
     }
-    
     .cart-section {
         text-transform: capitalize;
-        width: 70%;
-        margin: 0 auto;
+        width: 80%;
+        margin: 10vh auto;
         min-height: 1000px;
     }
     
@@ -24,7 +22,7 @@
         display: flex;
         justify-content: space-between;
         font-size: 25px;
-        border-bottom: 1px solid rgb(216, 213, 213);
+        border-bottom: 3px solid rgb(216, 213, 213);
     }
     
     .li {
@@ -72,7 +70,21 @@
         border-radius: 10px;
         font-weight: 800;
     }
-    
     .total {
         margin-right: 10px;
+    }
+    .product-name{
+        margin: 0 30px;
+    }
+    .header-list{
+        padding: 10px;
+    }
+    .show-cart{
+        margin: 0 auto 10vh;
+    }
+    .total{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: -7px;
     }

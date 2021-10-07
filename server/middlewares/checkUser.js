@@ -1,7 +1,7 @@
 const { verify } = require('jsonwebtoken');
 
 const {
-  env: { secretKey },
+  env: { SECRET_KEY },
 } = process;
 
 module.exports = (req, res, next) => {
@@ -9,7 +9,7 @@ module.exports = (req, res, next) => {
     cookies: { access_token: accessToken },
   } = req;
   if (accessToken) {
-    verify(accessToken, secretKey, (err, value) => {
+    verify(accessToken, SECRET_KEY, (err, value) => {
       if (err) {
         res
           .status(401)
@@ -19,7 +19,6 @@ module.exports = (req, res, next) => {
             },
           );
       } else {
-        console.log(1);
         req.userId = value.userId;
         next();
       }
