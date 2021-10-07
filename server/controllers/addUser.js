@@ -23,10 +23,10 @@ const addUser = (req, res, next) => {
                 next();
               });
           } else {
-            res.json({ Error: 'Something Wrong!' });
+            res.status(400).json({ Error: 'Something Wrong!' });
           }
         })
-        .catch(() => res.json({ Error: 'Email or Username is already exists!' })));
+        .catch(() => res.status(400).json({ Error: 'Email or Username is already exists!' })));
   }
 };
 
